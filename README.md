@@ -2,7 +2,7 @@
 
 Basic Spring Boot 1.3.2.RELEASE, Spring MVC, Spring Security
 
-Spring Config setting up some basic overrides for error pages,
+Spring Config setting up some basic overrides for error pages and view mappings for thymeleaf.
 
 ~~~
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
