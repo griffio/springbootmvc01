@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 *.class
 
 # Mobile Tools for Java (J2ME)
@@ -17,5 +16,4 @@ hs_err_pid*
 build
 classes
 out
-mvc01.iml
->>>>>>> project files
+*.iml
