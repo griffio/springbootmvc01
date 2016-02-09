@@ -1,0 +1,9 @@
+ -------------------------
+|                         |
+|      T  e  s  t  s      |
+|                         |
+ -------------------------
+
+Notes:
+
+This file /src/test/resources/banner.txt

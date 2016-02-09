@@ -1,0 +1,40 @@
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:$spring_boot_gradle_plugin_version"
+  }
+}
+
+apply plugin: "application"
+apply plugin: "spring-boot"
+
+project.ext.mainClassName = "griffio.Main"
+
+jar {
+  baseName = "mvc01"
+  version = "1.0.0"
+}
+
+project.ext.sourceCompatibility = JavaVersion.VERSION_1_8
+project.ext.targetCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile("org.springframework.boot:spring-boot-starter-web",
+          "org.springframework.boot:spring-boot-starter-security",
+          "org.springframework.boot:spring-boot-starter-thymeleaf",
+          "org.webjars.bower:skeleton-css:${skeletoncss_version}")
+
+  testCompile(
+          "junit:junit",
+          "org.springframework.boot:spring-boot-starter-test")
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "2.9"
+}

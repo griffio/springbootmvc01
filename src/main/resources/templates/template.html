@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+  <title th:replace="this :: #title">Title will be replaced</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" th:href="@{/webjars/skeleton-css/2.0.4/css/normalize.css}" type="text/css" />
+  <link rel="stylesheet" th:href="@{/webjars/skeleton-css/2.0.4/css/skeleton.css}" type="text/css" />
+  <link rel="icon" type="image/x-icon" th:href="@{/favicon.ico}" />
+  <link rel="icon" type="image/png" th:href="@{/favicon-32x32.png}" sizes="32x32" />
+  <link rel="icon" type="image/png" th:href="@{/favicon-16x16.png}" sizes="16x16" />
+</head>
+<body>
+</body>
+<footer th:fragment="footer">
+  <p><a href="https://github.com/griffio">griffio 2016</a></p>
+</footer>
+</html>

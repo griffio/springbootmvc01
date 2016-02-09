@@ -1,0 +1,20 @@
+ ____ ____ ____ ____ ____ ____ ____
+||G |||r |||i |||f |||f |||i |||o ||
+||__|||__|||__|||__|||__|||__|||__||
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|
+
+Spring Boot: ${spring-boot.version}
+
+Notes:
+
+This file /src/main/resources/banner.txt
+
+When Spring Security is on the classpath Spring Boot automatically secures all HTTP endpoints with "basic" authentication.
+Use @SpringBootApplication(exclude = SecurityAutoConfiguration.class) to disable, or we could also override by adding a configuration:
+@Configuration
+public class SecurityOverride extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity httpSecurity) throws Exception {
+        httpSecurity.authorizeRequests().antMatchers("/").permitAll();
+    }
+}
