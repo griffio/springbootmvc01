@@ -5,6 +5,12 @@ Basic Spring Boot 1.3.2.RELEASE, Spring MVC, Spring Security
 Spring Config setting up some basic overrides for error pages and view mappings for thymeleaf.
 
 ~~~
+./gradlew cleanTest test bootRun
+~~~
+
+http://localhost:8080/
+
+~~~
 @SpringBootApplication(exclude = SecurityAutoConfiguration.class)
 @RequestMapping
 public class Main extends WebMvcConfigurerAdapter implements EmbeddedServletContainerCustomizer {
