@@ -18,19 +18,18 @@ public class People {
     return Collections.emptyList();
   }
 
-
-  @RequestMapping(value="edit", method=RequestMethod.GET)
+  @RequestMapping(value="person", method=RequestMethod.GET)
   public String showForm(PersonForm form) {
-    return "form";
+    return "person";
   }
 
-  @RequestMapping(value="edit", method=RequestMethod.POST)
-  public String checkPersonInfo(@Valid PersonForm form, BindingResult bindingResult) {
+  @RequestMapping(value="person", method=RequestMethod.POST)
+  public String submit(@Valid PersonForm form, BindingResult bindingResult) {
 
     if (bindingResult.hasErrors()) {
-      return "form";
+      return "person";
     }
 
-    return "redirect:/results";
+    return "redirect:/people";
   }
 }

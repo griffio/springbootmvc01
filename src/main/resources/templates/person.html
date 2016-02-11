@@ -4,36 +4,24 @@
   <title id="title">Person</title>
 </head>
 <body>
-<form action="#" th:action="@{/}" th:object="${form}" method="post">
-  <table>
-    <tr>
-      <td>Name:</td>
-      <td><input type="text" th:field="*{name}" /></td>
-      <td th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name Error</td>
-    </tr>
-    <tr>
-      <td>Age:</td>
-      <td><input type="text" th:field="*{age}" /></td>
-      <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Name Error</td>
-    </tr>
-    <tr>
-      <td><button type="submit">Submit</button></td>
-    </tr>
-  </table>
-
-  <form>
-    <div class="row">
-      <div class="six columns">
-        <label for="first-name">First Name</label>
-        <input class="u-full-width" type="text" th:value="firstname" id="first-name">
-      </div>
-      <div class="six columns">
-        <label for="last-name">Last Name</label>
-        <input class="u-full-width" type="text" th:value="lastname" id="last-name">
-      </div>
+<form action="#" th:action="@{/people/person}" th:object="${personForm}" method="post">
+  <div class="row">
+    <div class="six columns">
+      <label for="first-name">First Name</label>
+      <input class="u-full-width" type="text" th:field="*{firstName}" id="first-name"/>
     </div>
-    <input class="button-primary" type="submit" value="Save">
-  </form>
+    <div class="six columns">
+      <label for="last-name">Last Name</label>
+      <input class="u-full-width" type="text" th:field="*{lastName}" id="last-name"/>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <label for="email-address">Email</label>
+      <input class="u-full-width" type="text" th:field="*{emailAddress}" id="email-address"/>
+    </div>
+  </div>
+  <input class="button-primary" type="submit" value="Save" />
 </form>
 <footer th:replace="template :: footer"></footer>
 </body>
