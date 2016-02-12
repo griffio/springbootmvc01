@@ -6,11 +6,16 @@ import java.util.List;
 import javax.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.HttpSessionRequiredException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 @Controller
 @RequestMapping("/people")
+@SessionAttributes("personForm")
 public class People {
 
   @RequestMapping(method = RequestMethod.GET)
@@ -18,18 +23,22 @@ public class People {
     return Collections.emptyList();
   }
 
-  @RequestMapping(value="person", method=RequestMethod.GET)
+  @RequestMapping(value = "person", method = RequestMethod.GET)
   public String showForm(PersonForm form) {
     return "person";
   }
 
-  @RequestMapping(value="person", method=RequestMethod.POST)
-  public String submit(@Valid PersonForm form, BindingResult bindingResult) {
-
+  @RequestMapping(value = "person", method = RequestMethod.POST)
+  public String submit(@Valid PersonForm form, BindingResult bindingResult, SessionStatus status) {
     if (bindingResult.hasErrors()) {
       return "person";
     }
+    status.setComplete();
+    return redirectToPeople();
+  }
 
+  @ExceptionHandler(HttpSessionRequiredException.class)
+  public String redirectToPeople() {
     return "redirect:/people";
   }
 }
