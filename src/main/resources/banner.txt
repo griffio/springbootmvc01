@@ -6,6 +6,8 @@
 Spring Boot: ${spring-boot.version}
 
 Notes:
+https://mvc-exceptions-v2.cfapps.io/
+https://github.com/spring-projects/spring-mvc-showcase
 
 This file /src/main/resources/banner.txt
 

@@ -32,6 +32,7 @@ public class Main extends WebMvcConfigurerAdapter implements EmbeddedServletCont
     registry.addViewController("/").setViewName("index");
     registry.addViewController("/404").setViewName("404");
     registry.addViewController("/500").setViewName("500");
+    registry.addStatusController("/status", HttpStatus.OK);
   }
 
   @Bean
@@ -40,8 +41,9 @@ public class Main extends WebMvcConfigurerAdapter implements EmbeddedServletCont
     return adapter;
   }
 
-  @RequestMapping("/status")
-  @ResponseBody String status() {
+  @RequestMapping("/message")
+  @ResponseBody String message() {
     return "OK";
   }
+
 }

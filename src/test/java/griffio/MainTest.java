@@ -1,5 +1,7 @@
 package griffio;
 
+import griffio.people.Person;
+import griffio.people.controller.PersonForm;
 import javax.annotation.Resource;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,11 +10,15 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -33,9 +39,16 @@ public class MainTest {
   @Test
   public void status_route_ok_content() throws Exception {
     this.mockMvc.perform(get("/status"))
-        .andExpect(status().isOk())
-        .andExpect(content().string(new Main().status()));
+        .andExpect(status().isOk());
   }
+
+  @Test
+  public void message_route_ok_content() throws Exception {
+    this.mockMvc.perform(get("/message"))
+        .andExpect(status().isOk())
+        .andExpect(content().string(new Main().message()));
+  }
+
 
   @Test
   public void webjars_route_ok() throws Exception {
@@ -57,8 +70,28 @@ public class MainTest {
   }
 
   @Test
-  public void people_route_ok() throws Exception {
+  public void get_people_route_ok() throws Exception {
     this.mockMvc.perform(get("/people"))
+        .andExpect(status().isOk());
+  }
+
+  @Test
+  public void post_person_route_ok() throws Exception {
+    this.mockMvc.perform(post("/people/person")
+        .param("firstName", "First")
+        .param("lastName", "Last")
+        .param("emailAddress", "Email"))
+        .andExpect(status().isOk());
+  }
+  @Test
+  public void post_person_route_has_error() throws Exception {
+    this.mockMvc.perform(post("/people/person")
+        .param("firstName", "")
+        .param("lastName", "")
+        .param("emailAddress", ""))
+        .andDo(print())
+        .andExpect(model().
+            attributeHasFieldErrors("personForm", "emailAddress", "firstName", "lastName"))
         .andExpect(status().isOk());
   }
 }
