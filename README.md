@@ -1,6 +1,6 @@
 # springbootmvc01
 
-Basic Spring Boot 1.3.2.RELEASE, Spring MVC, Spring Security
+Basic Spring Boot 1.4.2.RELEASE, Spring MVC, Spring Security
 
 Spring Config setting up some basic overrides for error pages and view mappings for thymeleaf.
 

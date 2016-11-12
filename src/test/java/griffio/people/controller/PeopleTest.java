@@ -13,9 +13,9 @@ import static org.junit.Assert.assertThat;
 
 public class PeopleTest {
 
-  People controller;
-  PersonForm form;
-  MapBindingResult bindingResult;
+  private People controller;
+  private PersonForm form;
+  private MapBindingResult bindingResult;
 
   @Before
   public void setUp() throws Exception {
