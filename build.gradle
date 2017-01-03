@@ -1,12 +1,12 @@
 plugins {
-  id "org.springframework.boot" version "1.4.2.RELEASE"
+  id "org.springframework.boot" version "1.4.3.RELEASE"
 }
 
 project.ext.mainClassName = "griffio.Main"
 
 jar {
   baseName = "mvc01"
-  version = "1.0.0"
+  version = "1.4.3"
 }
 
 project.ext.sourceCompatibility = JavaVersion.VERSION_1_8
