@@ -26,7 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MainTest {
 
   @Resource
-  WebApplicationContext applicationContext;
+  private WebApplicationContext applicationContext;
+
   private MockMvc mockMvc;
 
   @Before
